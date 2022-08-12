@@ -1,7 +1,8 @@
-﻿using SuperStore.Domain.Model;
+﻿using SuperStore.Domain.Account;
+using SuperStore.Domain.Inventory;
 using System.Collections.Generic;
 
-namespace SuperStore.Domain.Commands.CreateOrderPipe
+namespace SuperStore.Domain.Payment.CreateOrder
 {
     public class CreateOrderContext
     {
@@ -10,7 +11,7 @@ namespace SuperStore.Domain.Commands.CreateOrderPipe
 
         public CreateOrderContext()
         {
-            Products = new List<Product>(); 
+            Products = new List<Product>();
         }
 
     }

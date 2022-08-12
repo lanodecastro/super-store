@@ -1,12 +1,14 @@
 ﻿using MediatR;
-using SuperStore.Domain.Repositories;
+using SuperStore.Domain.Account;
+using SuperStore.Domain.Inventory;
+using SuperStore.Domain.Payment.CreateOrder;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SuperStore.Domain.Commands.CreateOrderPipe.Steps
 {
-    public class RetriveData : IPipelineBehavior<CreateOrderRequest, CreateOrderResponse>
+    public class RetriveData : IPipelineBehavior<CreateOrderCommand, CreateOrderResponse>
     {
         private readonly CreateOrderContext _context;
         private readonly IUserRepository _userRepository;
@@ -17,7 +19,7 @@ namespace SuperStore.Domain.Commands.CreateOrderPipe.Steps
             _userRepository = userRepository;
             _productRepository = productRepository;
         }
-        public Task<CreateOrderResponse> Handle(CreateOrderRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
+        public Task<CreateOrderResponse> Handle(CreateOrderCommand request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
         {
             _context.User = _userRepository.Get(request.UserId);
 

@@ -1,21 +1,15 @@
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SuperStore.Domain.Repositories;
+using SuperStore.Domain.Payment.CreateOrder;
+using SuperStore.Domain.Workflow;
 using SuperStore.Infra.Services;
 using SuperStore.Infra.Services.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace SuperStore.Api
 {
@@ -38,11 +32,11 @@ namespace SuperStore.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SuperStore.Api", Version = "v1" });
             });
 
-
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMailService, MailService>();
             services.AddMediatR(Assembly.Load("SuperStore.Domain"));
+
+            services.AddWorkFlow<CreateOrderWorkflow>();
+
 
         }
 
@@ -65,7 +59,7 @@ namespace SuperStore.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });          
+            });
         }
     }
 }

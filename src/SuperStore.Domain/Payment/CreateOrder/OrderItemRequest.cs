@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SuperStore.Domain.Commands.CreateOrder
+﻿namespace SuperStore.Domain.Payment.CreateOrder
 {
     public class OrderItemRequest
     {

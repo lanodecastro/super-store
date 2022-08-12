@@ -2,15 +2,15 @@
 using SuperStore.Domain.Model.Payment;
 using System.Collections.Generic;
 
-namespace SuperStore.Domain.Commands.CreateOrder
+namespace SuperStore.Domain.Payment.CreateOrder
 {
-    public class CreateOrderRequest : IRequest<CreateOrderResponse>
+    public class CreateOrderCommand : IRequest<CreateOrderResponse>
     {
         public int UserId { get; set; }
         public IList<OrderItemRequest> Items { get; set; }
-        public PaymentType PaymentType { get; set; }
+        public PaymentTypeEnum PaymentType { get; set; }
 
-        public CreateOrderRequest()
+        public CreateOrderCommand()
         {
             Items = new List<OrderItemRequest>();
         }

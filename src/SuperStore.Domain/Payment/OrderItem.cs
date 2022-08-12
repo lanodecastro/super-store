@@ -1,6 +1,8 @@
-﻿using System;
+﻿using SuperStore.Domain.Account;
+using SuperStore.Domain.Inventory;
+using System;
 
-namespace SuperStore.Domain.Model
+namespace SuperStore.Domain.Payment
 {
     public class OrderItem
     {

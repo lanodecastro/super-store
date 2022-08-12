@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperStore.Domain.Model.Payment
+namespace SuperStore.Domain.Account
 {
-    public enum PaymentType
+    internal class Adress
     {
-        Pix,
-        CreditCard,
     }
 }

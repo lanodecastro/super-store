@@ -1,4 +1,4 @@
-﻿namespace SuperStore.Domain.Model
+﻿namespace SuperStore.Domain.Account
 {
     public class User
     {

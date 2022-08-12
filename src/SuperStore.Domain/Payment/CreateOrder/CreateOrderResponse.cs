@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperStore.Domain.Commands.CreateOrderPipe
+namespace SuperStore.Domain.Payment.CreateOrder
 {
-    public class CreateOrderResponse:Notifiable<Notification>
+    public class CreateOrderResponse : Notifiable<Notification>
     {
         public Guid OrderId { get; set; }
     }

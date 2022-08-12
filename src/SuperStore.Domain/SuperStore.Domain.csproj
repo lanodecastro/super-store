@@ -5,15 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Commands\CreateOrderPipe\**" />
-    <Compile Remove="Workflow\**" />
-    <EmbeddedResource Remove="Commands\CreateOrderPipe\**" />
-    <EmbeddedResource Remove="Workflow\**" />
-    <None Remove="Commands\CreateOrderPipe\**" />
-    <None Remove="Workflow\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Flunt" Version="2.0.5" />
     <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />

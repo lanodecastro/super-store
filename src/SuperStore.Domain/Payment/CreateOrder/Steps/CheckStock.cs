@@ -1,14 +1,13 @@
 ﻿using MediatR;
+using SuperStore.Domain.Payment.CreateOrder;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SuperStore.Domain.Commands.CreateOrderPipe.Steps
 {
-    public class CheckStock : IPipelineBehavior<CreateOrderRequest, CreateOrderResponse>
+    public class CheckStock : IPipelineBehavior<CreateOrderCommand, CreateOrderResponse>
     {
         private readonly CreateOrderContext _context;
         public CheckStock(CreateOrderContext context)
@@ -16,13 +15,13 @@ namespace SuperStore.Domain.Commands.CreateOrderPipe.Steps
             _context = context;
         }
 
-        public Task<CreateOrderResponse> Handle(CreateOrderRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
+        public Task<CreateOrderResponse> Handle(CreateOrderCommand request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
         {
             var response = new CreateOrderResponse();
 
             foreach (var item in request.Items)
             {
-                var product = _context.Products.First(x=>x.Id==item.ProductId);
+                var product = _context.Products.First(x => x.Id == item.ProductId);
 
                 if (product.AvailableQuantity < item.Amount)
                 {

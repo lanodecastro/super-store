@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SuperStore.Domain.Commands.CreateOrder;
+using SuperStore.Domain.Payment.CreateOrder;
 using System.Threading.Tasks;
 
 namespace SuperStore.Api.Controllers
@@ -16,7 +16,7 @@ namespace SuperStore.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest request)
+        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderCommand request)
         {
             var response = await _mediator.Send(request);
 

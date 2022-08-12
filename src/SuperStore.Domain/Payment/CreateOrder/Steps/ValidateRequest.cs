@@ -1,15 +1,16 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
 using MediatR;
+using SuperStore.Domain.Payment.CreateOrder;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SuperStore.Domain.Commands.CreateOrderPipe.Steps
 {
-    public class ValidateRequest : IPipelineBehavior<CreateOrderRequest, CreateOrderResponse>
+    public class ValidateRequest : IPipelineBehavior<CreateOrderCommand, CreateOrderResponse>
     {
-        public Task<CreateOrderResponse> Handle(CreateOrderRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
+        public Task<CreateOrderResponse> Handle(CreateOrderCommand request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
         {
             var response = new CreateOrderResponse();
 

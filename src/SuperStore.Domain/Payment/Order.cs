@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SuperStore.Domain.Account;
+using System;
 using System.Collections.Generic;
 
-namespace SuperStore.Domain.Model
+namespace SuperStore.Domain.Payment
 {
     public class Order
     {

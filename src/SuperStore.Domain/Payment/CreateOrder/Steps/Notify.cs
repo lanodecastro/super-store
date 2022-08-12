@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using SuperStore.Domain.Payment.CreateOrder;
 using SuperStore.Infra.Services.Abstractions;
 using System;
 using System.Threading;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperStore.Domain.Commands.CreateOrderPipe.Steps
 {
-    public class Notify : IPipelineBehavior<CreateOrderRequest, CreateOrderResponse>
+    public class Notify : IPipelineBehavior<CreateOrderCommand, CreateOrderResponse>
     {
         private readonly IMailService _mailService;
         private readonly CreateOrderContext _context;
@@ -16,7 +17,7 @@ namespace SuperStore.Domain.Commands.CreateOrderPipe.Steps
             _context = context;
         }
 
-        public Task<CreateOrderResponse> Handle(CreateOrderRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
+        public Task<CreateOrderResponse> Handle(CreateOrderCommand request, CancellationToken cancellationToken, RequestHandlerDelegate<CreateOrderResponse> next)
         {
             _mailService.Send(_context.User.Email);
 

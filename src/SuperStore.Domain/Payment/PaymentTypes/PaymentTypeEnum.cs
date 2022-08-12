@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperStore.Domain.Commands.CreateOrder
+namespace SuperStore.Domain.Model.Payment
 {
-    public interface IPaymentDataRequest
+    public enum PaymentTypeEnum
     {
+        Pix,
+        CreditCard,
     }
 }
